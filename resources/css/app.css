@@ -5,3 +5,7 @@
 .spinner {
     position: absolute;
 }
+
+.iframe_container {
+    padding-top: 56.25%;
+}
