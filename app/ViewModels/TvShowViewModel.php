@@ -22,6 +22,7 @@ class TvShowViewModel extends ViewModel
             'first_air_date' => Carbon::parse($this->tvshow['first_air_date'])->format('M d, Y'),
             'genres' => collect($this->tvshow['genres'])->pluck('name')->flatten()->implode(', '),
             'crew' => collect($this->tvshow['credits']['crew'])->take(2),
+            'episode_run_time' => collect($this->tvshow['episode_run_time'])->avg(),
             'cast' => collect($this->tvshow['credits']['cast'])->take(5)->map(function($cast) {
                 return collect($cast)->merge([
                     'profile_path' => $cast['profile_path']
@@ -30,9 +31,6 @@ class TvShowViewModel extends ViewModel
                 ]);
             }),
             'images' => collect($this->tvshow['images']['backdrops'])->take(9),
-        ])->only([
-            'poster_path', 'id', 'genres', 'name', 'vote_average', 'overview', 'first_air_date', 'credits', 'videos',
-            'images', 'crew', 'cast', 'images', 'created_by'
         ])->dump();
     }
 }

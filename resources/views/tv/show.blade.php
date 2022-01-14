@@ -23,12 +23,20 @@
 
                 <div class="mt-12">
                     <div class="flex mt-4">
-                        @foreach($tvshow['created_by'] as $crew)
-                            <div class="mr-8">
-                                <div>{{ $crew['name'] }}</div>
-                                <div class="text-sm text-gray-400">Creator</div>
+                            <div class="flex flex-row flex-nowrap mr-8">
+                                <div class="creators">
+                                    <p class="font-bold text-gray-400 pb-2">Creators</p>
+                                    <ul>
+                                        @foreach($tvshow['created_by'] as $crew)
+                                            <li>{{ $crew['name'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="ml-20">
+                                    <p class="font-bold text-gray-400 pb-2">Episode Length</p>
+                                    <div>~ {{ $tvshow['episode_run_time'] }} min</div>
+                                </div>
                             </div>
-                        @endforeach
                     </div>
                 </div>
 
